@@ -152,7 +152,7 @@
     width: 18px;
     height: 18px;
   }
-  .theme-switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+  .theme-switch { position: fixed; top: 24px; right: 32px; z-index: 1100; display: inline-block; width: 44px; height: 24px; }
   .theme-switch input { opacity: 0; width: 0; height: 0; }
   .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--border); transition: .3s; border-radius: 24px; }
   .slider:before { position: absolute; content: "☀️"; font-size: 11px; display: flex; align-items: center; justify-content: center; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
@@ -228,15 +228,18 @@
   .hook-box { border-radius: 8px; padding: 11px 14px; margin-bottom: 13px; }
   .hook-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 5px; }
   .hook-text { font-size: 13px; font-weight: 600; line-height: 1.5; font-style: italic; }
-  .hook-common, .hook-finance, .hook-medical, .hook-mfg, .hook-legal { background: var(--box-bg); }
+  .hook-common { background: rgba(160,174,192,0.15); }
+  .hook-finance, .hook-medical { background: var(--danger-bg); }
+  .hook-mfg { background: var(--warning-bg); }
+  .hook-legal { background: rgba(107,70,193,0.15); }
   .hook-common .hook-label { color: var(--text-muted); }
   .hook-common .hook-text { color: var(--text-primary); }
   .hook-finance .hook-label, .hook-medical .hook-label { color: var(--danger-text); }
   .hook-finance .hook-text, .hook-medical .hook-text { color: var(--danger-text); }
   .hook-mfg .hook-label { color: var(--warning-text); }
   .hook-mfg .hook-text { color: var(--warning-text); }
-  .hook-legal .hook-label { color: #6B46C1; }
-  .hook-legal .hook-text { color: #6B46C1; }
+  .hook-legal .hook-label { color: #805ad5; }
+  .hook-legal .hook-text { color: #805ad5; }
   .hook-price { background: var(--warning-bg); }
   .hook-price .hook-label { color: var(--warning-text); }
   .hook-price .hook-text { color: var(--warning-text); }
