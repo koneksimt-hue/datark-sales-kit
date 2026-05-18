@@ -36,6 +36,7 @@
     --datark-bg: linear-gradient(135deg, #EBF8FF 0%, #E6FFFA 100%);
     --datark-border: #BEE3F8;
     --datark-text: #2D3748;
+    --fq-color: var(--info);
     --sidebar-w: 240px;
     --radius: 10px;
     --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
@@ -67,6 +68,7 @@
     --datark-bg: linear-gradient(135deg, rgba(43,108,176,0.15) 0%, rgba(47,133,90,0.15) 100%);
     --datark-border: rgba(255,255,255,0.1);
     --datark-text: var(--text-primary);
+    --fq-color: var(--success-text);
     --cyan-dim: rgba(0,201,167,0.25);
   }
 
@@ -150,22 +152,12 @@
     width: 18px;
     height: 18px;
   }
-  .theme-toggle-icon {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    padding: 6px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.15s;
-  }
-  .theme-toggle-icon:hover {
-    background: var(--box-bg);
-    transform: scale(1.05);
-  }
+  .theme-switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+  .theme-switch input { opacity: 0; width: 0; height: 0; }
+  .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--border); transition: .3s; border-radius: 24px; }
+  .slider:before { position: absolute; content: "☀️"; font-size: 11px; display: flex; align-items: center; justify-content: center; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+  input:checked + .slider { background-color: var(--navy-light); border-color: var(--navy-light); }
+  input:checked + .slider:before { transform: translateX(20px); content: "🌙"; background-color: #1e1e1e; }
   .page { display: none; padding: 16px 32px 48px; max-width: 900px; }
   .page.active { display: block; }
 
@@ -263,7 +255,7 @@
 
   .fq-box { margin-top: 13px; border: 1px solid var(--border); border-radius: 8px; padding: 11px 13px; background: var(--box-bg); }
   .fq-label { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 5px; }
-  .fq-text { font-size: 13px; color: var(--info); line-height: 1.6; }
+  .fq-text { font-size: 13px; color: var(--fq-color); line-height: 1.6; }
 
   .tip-box { margin-top: 11px; background: var(--box-bg-alt); border: 1px solid var(--box-border-alt); border-radius: 8px; padding: 10px 13px; font-size: 12px; color: var(--warning-text); line-height: 1.65; }
   .tip-box b { font-weight: 600; }
@@ -408,9 +400,10 @@
       </svg>
     </button>
     <div style="flex:1;"></div>
-    <button class="theme-toggle-icon" onclick="toggleTheme()" title="모드 전환">
-      <span class="icon">🌙</span>
-    </button>
+    <label class="theme-switch" title="모드 전환">
+      <input type="checkbox" class="theme-checkbox" onchange="toggleTheme()">
+      <span class="slider"></span>
+    </label>
   </div>
 
 <!-- ────────────── PAGE: 파일 의존도 분석 ────────────── -->
@@ -911,12 +904,12 @@
   <div class="section-label" style="margin-bottom:10px">DATARK가 직접 대응하는 ISMS 심사 항목</div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
     <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)">
-      <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px">2.9.3 백업 및 복구관리</div>
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px">2.9.3 백업 및 복구관리</div>
       <div style="font-size:12px;color:var(--text-secondary);line-height:1.75;margin-bottom:10px">백업 대상·주기·방법·절차 수립 / 정기적 복구 테스트 실시 / 중요정보 <b>물리적으로 다른 장소에 소산 백업</b></div>
       <div style="font-size:11px;background:var(--success-bg);color:var(--success-text);padding:6px 10px;border-radius:6px;font-weight:600">DATARK 대응: Private IPFS 다중 노드 = 소산 요건 자동 충족 + 복구 테스트 리포트 자동화</div>
     </div>
     <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)">
-      <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px">2.12 재해복구</div>
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px">2.12 재해복구</div>
       <div style="font-size:12px;color:var(--text-secondary);line-height:1.75;margin-bottom:10px">재해·재난 대비 안전조치 / 재해 복구 시험 및 개선 / RTO·RPO 목표 수립 및 실증</div>
       <div style="font-size:11px;background:var(--success-bg);color:var(--success-text);padding:6px 10px;border-radius:6px;font-weight:600">DATARK 대응: RTO 15분·RPO ~0초 실증 가능 / 재해복구 시험 기록 심사 제출용 리포트 제공</div>
     </div>
@@ -1379,21 +1372,16 @@ if (savedTheme) {
 }
 
 function toggleTheme() {
-  const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  const checkbox = document.querySelector('.theme-checkbox');
+  const newTheme = checkbox && checkbox.checked ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', newTheme);
   localStorage.setItem('theme', newTheme);
-  updateThemeIcon(newTheme);
 }
 
 function updateThemeIcon(theme) {
-  const btn = document.querySelector('.theme-toggle-icon .icon');
-  if(btn) {
-    if(theme === 'dark') {
-      btn.textContent = '☀️';
-    } else {
-      btn.textContent = '🌙';
-    }
+  const checkbox = document.querySelector('.theme-checkbox');
+  if(checkbox) {
+    checkbox.checked = (theme === 'dark');
   }
 }
 
