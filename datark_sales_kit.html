@@ -285,6 +285,25 @@
   .cat-title { font-size: 16px; font-weight: 700; color: var(--text-primary); }
   .cat-sub { font-size: 12px; color: var(--text-secondary); margin-top: 1px; }
   .cat-count { margin-left: auto; font-size: 11px; color: var(--text-muted); background: var(--bg); border: 1px solid var(--border); padding: 2px 9px; border-radius: 10px; }
+
+  /* News Tabs & Cards */
+  .news-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .news-tab { padding: 8px 14px; border-radius: 8px; background: transparent; color: var(--text-secondary); border: 1px solid transparent; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s; display: flex; align-items: center; gap: 6px; user-select: none; }
+  .news-tab:hover { background: var(--box-bg); color: var(--text-primary); }
+  .news-tab.active { background: var(--cyan-dim); color: var(--cyan); border: 1px solid rgba(0,201,167,0.3); }
+  .news-list { display: none; flex-direction: column; gap: 12px; }
+  .news-list.active { display: flex; }
+  .news-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; gap: 10px; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); border-color: var(--cyan); }
+  .news-meta { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-muted); }
+  .news-source { font-weight: 600; color: var(--navy); display: flex; align-items: center; gap: 6px; }
+  [data-theme="dark"] .news-source { color: var(--info-text); }
+  .news-date { color: var(--text-muted); }
+  .news-tag { background: var(--box-bg); padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; border: 1px solid var(--border); color: var(--text-secondary); }
+  .news-title { font-size: 15px; font-weight: 700; color: var(--text-primary); line-height: 1.4; }
+  .news-summary { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  .news-link { align-self: flex-start; font-size: 13px; font-weight: 600; color: var(--info); text-decoration: none; padding-top: 6px; display: inline-flex; align-items: center; gap: 4px;}
+  .news-link:hover { text-decoration: underline; color: var(--cyan); }
   /* ── MOBILE RESPONSIVE ── */
   @media (max-width: 768px) {
     .main { margin-left: 0 !important; }
@@ -377,6 +396,16 @@
   </div>
 
   <div class="nav-section">
+    <div class="nav-section-label" onclick="toggleNavSection(this)">업종별 뉴스 <span class="nav-chevron">▼</span></div>
+    <div class="nav-section-items">
+      <div class="nav-item" onclick="showPage('industry-news')">
+        보도자료
+      </div>
+    </div>
+  </div>
+
+
+  <div class="nav-section">
     <div class="nav-section-label" onclick="toggleNavSection(this)">협상 전략 <span class="nav-chevron">▼</span></div>
     <div class="nav-section-items">
       <div class="nav-item" onclick="showPage('price')">
@@ -384,6 +413,19 @@
       </div>
       <div class="nav-item" onclick="showPage('stake')">
         결정권자 대응
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label" onclick="toggleNavSection(this)">코넥시 소개 <span class="nav-chevron">▼</span></div>
+    <div class="nav-section-items">
+      <div class="nav-item" onclick="window.open('https://koneksi.co.kr', '_blank')">
+        홈페이지 ↗
+      </div>
+      <div class="nav-item" onclick="window.open('https://drive.google.com/drive/folders/1E7Tq5LoA2BlL0ejrTXNsVGRQs0cElild?usp=sharing', '_blank')">
+        제품소개서 ↗
       </div>
     </div>
   </div>
@@ -926,6 +968,154 @@
   </div>
 </div>
 
+<!-- ────────────── PAGE: 업종별 뉴스 ────────────── -->
+<div class="page" id="pg-industry-news">
+  <div class="page-header">
+    <div class="page-title">업종별 주요 뉴스</div>
+    <div class="page-desc">최근 산업별 랜섬웨어 피해, 정보보호 인증 의무화 동향 및 DR 관련 주요 뉴스 모음입니다.</div>
+  </div>
+
+  <div class="news-tabs">
+    <div class="news-tab active" onclick="showNewsTab(this, 'finance')">💳 금융 · 보험</div>
+    <div class="news-tab" onclick="showNewsTab(this, 'medical')">🏥 의료 · 병원</div>
+    <div class="news-tab" onclick="showNewsTab(this, 'mfg')">⚙️ 제조업</div>
+    <div class="news-tab" onclick="showNewsTab(this, 'legal')">⚖️ 법무 · 법무법인</div>
+    <div class="news-tab" onclick="showNewsTab(this, 'const')">🏗️ 건설 · 건축 · 엔지니어링</div>
+    <div class="news-tab" onclick="showNewsTab(this, 'media')">🎬 미디어 · 방송 · 엔터테인먼트</div>
+    <div class="news-tab" onclick="showNewsTab(this, 'public')">🏛️ 공공기관 · 지자체</div>
+    <div class="news-tab" onclick="showNewsTab(this, 'consult')">📋 회계 · 세무 · 컨설팅</div>
+    <div class="news-tab" onclick="showNewsTab(this, 'isms')">🛡️ ISMS 인증 추진 기업</div>
+  </div>
+
+  <div class="news-list active" id="news-list-finance">
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-source">전자신문 <span class="news-tag">금융보안</span></div>
+        <div class="news-date">2025.11.03</div>
+      </div>
+      <div class="news-title">금융권 DR 의무화 강화... "데이터 무손실 복구 체계 필수"</div>
+      <div class="news-summary">금융감독원이 최근 급증하는 랜섬웨어 위협에 대응하여 금융권 재해복구(DR) 가이드라인을 전면 개정했다. 특히 실시간 데이터 동기화와 망분리 환경에서의 백업 소산 요건이 크게 강화되었다.</div>
+      <a href="#" class="news-link">원문 보기 ↗</a>
+    </div>
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-source">보안뉴스 <span class="news-tag">랜섬웨어</span></div>
+        <div class="news-date">2025.09.15</div>
+      </div>
+      <div class="news-title">Qilin 랜섬웨어 그룹, 국내 중소형 금융사 집중 타격</div>
+      <div class="news-summary">Qilin 그룹의 최신 랜섬웨어 변종이 국내 캐피털 및 저축은행 3곳의 시스템을 마비시켰다. 이들 기업은 백업 서버까지 동시에 감염되어 복구에 심각한 차질을 빚고 있다.</div>
+      <a href="#" class="news-link">원문 보기 ↗</a>
+    </div>
+  </div>
+
+  <div class="news-list" id="news-list-medical">
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-source">데일리시큐 <span class="news-tag">의료보안</span></div>
+        <div class="news-date">2026.01.12</div>
+      </div>
+      <div class="news-title">대형 종합병원 EMR 시스템 랜섬웨어 감염... 환자 정보 유출 비상</div>
+      <div class="news-summary">수도권 소재 종합병원의 전자의무기록(EMR) 시스템이 랜섬웨어에 감염되어 외래 진료가 전면 중단되었다. 의료법 개정으로 진료기록 백업이 의무화되었음에도 실효성 있는 DR 체계 부재가 원인으로 지목된다.</div>
+      <a href="#" class="news-link">원문 보기 ↗</a>
+    </div>
+  </div>
+
+  <div class="news-list" id="news-list-mfg">
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-source">지디넷코리아 <span class="news-tag">스마트팩토리</span></div>
+        <div class="news-date">2025.12.08</div>
+      </div>
+      <div class="news-title">첨단 제조기업 설계도면 탈취 목적의 타겟형 랜섬웨어 기승</div>
+      <div class="news-summary">반도체 및 2차전지 부품 제조사들을 겨냥한 랜섬웨어 공격이 전년 대비 40% 증가했다. 스마트팩토리 확산에 따라 생산망(OT)과 사무망(IT)의 연결점이 공격의 통로로 악용되고 있다.</div>
+      <a href="#" class="news-link">원문 보기 ↗</a>
+    </div>
+  </div>
+
+  <div class="news-list" id="news-list-legal">
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-source">법률신문 <span class="news-tag">리걸테크</span></div>
+        <div class="news-date">2025.10.22</div>
+      </div>
+      <div class="news-title">대형 로펌 잇단 해킹 시도... 기밀문서 유출 우려 고조</div>
+      <div class="news-summary">주요 법무법인의 소송 자료 및 M&A 기밀 문서를 노린 사이버 공격이 포착되었다. 의뢰인 정보 보호를 위해 강력한 데이터 접근 제어 및 위변조 방지 기술 도입이 로펌계의 화두로 떠올랐다.</div>
+      <a href="#" class="news-link">원문 보기 ↗</a>
+    </div>
+  </div>
+
+  <div class="news-list" id="news-list-const">
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-source">건설경제 <span class="news-tag">건축플랫폼</span></div>
+        <div class="news-date">2025.08.30</div>
+      </div>
+      <div class="news-title">건설사 BIM 데이터 랜섬웨어 타격, 수백억 공사 지연 사태</div>
+      <div class="news-summary">대형 건설사의 클라우드 기반 BIM(건축정보모델링) 저장소가 랜섬웨어 공격을 받아 국내외 주요 현장의 공사가 일시 중단되는 사태가 발생했다. 용량이 방대한 설계 데이터의 복구에 며칠이 소요될 것으로 예상된다.</div>
+      <a href="#" class="news-link">원문 보기 ↗</a>
+    </div>
+  </div>
+
+  <div class="news-list" id="news-list-media">
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-source">방송기술저널 <span class="news-tag">미디어보안</span></div>
+        <div class="news-date">2026.02.15</div>
+      </div>
+      <div class="news-title">엔터테인먼트사 미공개 음원/영상 유출 협박 랜섬웨어 기승</div>
+      <div class="news-summary">유명 K-POP 기획사의 미공개 컴백 자료가 랜섬웨어 그룹에 의해 암호화되고, 대가 지불 거절 시 유출하겠다는 협박 사건이 발생했다. 대용량 미디어 파일에 대한 분산 백업 솔루션 수요가 급증하고 있다.</div>
+      <a href="#" class="news-link">원문 보기 ↗</a>
+    </div>
+  </div>
+
+  <div class="news-list" id="news-list-public">
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-source">공공뉴스 <span class="news-tag">공공망</span></div>
+        <div class="news-date">2025.07.11</div>
+      </div>
+      <div class="news-title">지자체 대국민 서비스망 장애, 백업 시스템 복구 실패로 장기화</div>
+      <div class="news-summary">지방자치단체의 행정 시스템이 랜섬웨어에 감염되었으나, 동일 네트워크에 있던 백업본마저 손상되어 대국민 민원 서비스가 3일 이상 중단되었다. 공공기관의 물리적 소산 백업 원칙 준수 여부가 도마에 올랐다.</div>
+      <a href="#" class="news-link">원문 보기 ↗</a>
+    </div>
+  </div>
+
+  <div class="news-list" id="news-list-consult">
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-source">IT조선 <span class="news-tag">기업보안</span></div>
+        <div class="news-date">2025.11.28</div>
+      </div>
+      <div class="news-title">회계·컨설팅펌 고객 감사 자료 유출 노린 표적 공격 증가</div>
+      <div class="news-summary">상장사들의 주요 재무 데이터와 감사 보고서를 취급하는 대형 회계법인들이 해커들의 새로운 타겟이 되고 있다. 파트너급 회계사들의 이메일과 클라우드 저장소가 주 공격 대상이다.</div>
+      <a href="#" class="news-link">원문 보기 ↗</a>
+    </div>
+  </div>
+
+  <div class="news-list" id="news-list-isms">
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-source">아이티데일리 <span class="news-tag">ISMS-P</span></div>
+        <div class="news-date">2026.04.05</div>
+      </div>
+      <div class="news-title">ISMS-P 인증 의무 대상 확대... B2B SaaS 기업 비상</div>
+      <div class="news-summary">정보보호 및 개인정보보호 관리체계(ISMS-P) 인증 의무 대상이 대폭 확대되면서 시리즈 B 이상의 B2B 스타트업들이 발등에 불이 떨어졌다. 특히 재해복구(DR) 시스템 구축에 대한 실효성 심사가 까다로워졌다.</div>
+      <a href="#" class="news-link">원문 보기 ↗</a>
+    </div>
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-source">유니콘팩토리 <span class="news-tag">스타트업</span></div>
+        <div class="news-date">2025.03.20</div>
+      </div>
+      <div class="news-title">레몬베이스 등 주요 B2B SaaS, ISMS 인증 취득 위해 IT 인프라 전면 개편</div>
+      <div class="news-summary">주요 B2B 솔루션 기업들이 대기업 고객사 유치를 위한 필수 요건인 ISMS 인증을 획득하기 위해 인프라 보안 및 데이터 복구 체계에 대규모 투자를 단행하고 있다.</div>
+      <a href="#" class="news-link">원문 보기 ↗</a>
+    </div>
+  </div>
+</div>
+
+
+
 </main>
 
 <script>
@@ -1361,6 +1551,14 @@ function toggleCard(card) {
   const was = card.classList.contains('open');
   document.querySelectorAll('.ind-card.open').forEach(c => c.classList.remove('open'));
   if (!was) card.classList.add('open');
+}
+
+function showNewsTab(el, tabId) {
+  document.querySelectorAll('.news-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.news-list').forEach(l => l.classList.remove('active'));
+  
+  el.classList.add('active');
+  document.getElementById('news-list-' + tabId).classList.add('active');
 }
 
 // ── INIT ──────────────────────────────────────────────────
