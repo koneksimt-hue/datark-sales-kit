@@ -833,53 +833,27 @@
 
     <div class="news-dropdown-container" id="roadmap-dropdown-container" style="max-width: 100%; margin-bottom: 20px;">
     <div class="news-dropdown-trigger" onclick="toggleRoadmapDropdown()" style="padding: 14px 18px; font-size: 15px;">
-      <span id="roadmap-dropdown-selected"><span style="font-weight:600;color:#2563EB;margin-right:8px;display:inline-block;width:55px">Stage 1</span> 소형 전문직 사무소</span>
+      <span id="roadmap-dropdown-selected"><span style="font-weight:600;color:#2563EB;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;">Stage 1</span> 소형 전문직 사무소</span>
       <span class="dropdown-chevron">▼</span>
     </div>
     <div class="news-dropdown-menu" id="roadmap-dropdown-menu">
-      <div class="news-dropdown-item active" onclick="selectRoadmapStage(0, '<span style=\'font-weight:600;color:#2563EB;margin-right:8px;display:inline-block;width:55px\'>Stage 1</span> 소형 전문직 사무소')">
-        <span style="font-weight:600;color:#2563EB;margin-right:8px;display:inline-block;width:55px">Stage 1</span> 소형 전문직 사무소
+      <div class="news-dropdown-item active" onclick="selectRoadmapStage(0, '<span style=\'font-weight:600;color:#2563EB;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;\'>Stage 1</span> 소형 전문직 사무소')">
+        <span style="font-weight:600;color:#2563EB;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;">Stage 1</span> 소형 전문직 사무소
       </div>
-      <div class="news-dropdown-item" onclick="selectRoadmapStage(1, '<span style=\'font-weight:600;color:#7C3AED;margin-right:8px;display:inline-block;width:55px\'>Stage 2</span> 미디어·콘텐츠 제작사')">
-        <span style="font-weight:600;color:#7C3AED;margin-right:8px;display:inline-block;width:55px">Stage 2</span> 미디어·콘텐츠 제작사
+      <div class="news-dropdown-item" onclick="selectRoadmapStage(1, '<span style=\'font-weight:600;color:#7C3AED;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;\'>Stage 2</span> 미디어·콘텐츠 제작사')">
+        <span style="font-weight:600;color:#7C3AED;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;">Stage 2</span> 미디어·콘텐츠 제작사
       </div>
-      <div class="news-dropdown-item" onclick="selectRoadmapStage(2, '<span style=\'font-weight:600;color:#DC2626;margin-right:8px;display:inline-block;width:55px\'>Stage 3</span> 중견 제조·건설')">
-        <span style="font-weight:600;color:#DC2626;margin-right:8px;display:inline-block;width:55px">Stage 3</span> 중견 제조·건설
+      <div class="news-dropdown-item" onclick="selectRoadmapStage(2, '<span style=\'font-weight:600;color:#DC2626;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;\'>Stage 3</span> 중견 제조·건설')">
+        <span style="font-weight:600;color:#DC2626;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;">Stage 3</span> 중견 제조·건설
       </div>
-      <div class="news-dropdown-item" onclick="selectRoadmapStage(3, '<span style=\'font-weight:600;color:#D97706;margin-right:8px;display:inline-block;width:55px\'>Stage 4</span> ISMS 의무 대상 기업')">
-        <span style="font-weight:600;color:#D97706;margin-right:8px;display:inline-block;width:55px">Stage 4</span> ISMS 의무 대상 기업
+      <div class="news-dropdown-item" onclick="selectRoadmapStage(3, '<span style=\'font-weight:600;color:#D97706;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;\'>Stage 4</span> ISMS 의무 대상 기업')">
+        <span style="font-weight:600;color:#D97706;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;">Stage 4</span> ISMS 의무 대상 기업
       </div>
-      <div class="news-dropdown-item" onclick="selectRoadmapStage(4, '<span style=\'font-weight:600;color:#059669;margin-right:8px;display:inline-block;width:55px\'>Stage 5</span> 공공·금융·대형 병원')">
-        <span style="font-weight:600;color:#059669;margin-right:8px;display:inline-block;width:55px">Stage 5</span> 공공·금융·대형 병원
+      <div class="news-dropdown-item" onclick="selectRoadmapStage(4, '<span style=\'font-weight:600;color:#059669;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;\'>Stage 5</span> 공공·금융·대형 병원')">
+        <span style="font-weight:600;color:#059669;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;">Stage 5</span> 공공·금융·대형 병원
       </div>
     </div>
   </div>
-    <div onclick="showRoadmapStage(1)" id="rs1" style="cursor:pointer;border:0.5px solid var(--border);border-top:3px solid #7C3AED;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
-      <div style="font-size:10px;font-weight:500;color:#7C3AED;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 2</div>
-      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">미디어·콘텐츠 제작사</div>
-      <div style="font-size:18px;font-weight:500;color:#7C3AED">~15억</div>
-      <div style="font-size:11px;color:var(--text-muted)">10~50인 · 대용량 파일</div>
-    </div>
-    <div onclick="showRoadmapStage(2)" id="rs2" style="cursor:pointer;border:0.5px solid var(--border);border-top:3px solid #DC2626;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
-      <div style="font-size:10px;font-weight:500;color:#DC2626;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 3</div>
-      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">중견 제조·건설</div>
-      <div style="font-size:18px;font-weight:500;color:#DC2626">~50억</div>
-      <div style="font-size:11px;color:var(--text-muted)">50~200인 · 도면 파일</div>
-    </div>
-    <div onclick="showRoadmapStage(3)" id="rs3" style="cursor:pointer;border:0.5px solid var(--border);border-top:3px solid #D97706;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
-      <div style="font-size:10px;font-weight:500;color:#D97706;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 4</div>
-      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">ISMS 의무 대상 기업</div>
-      <div style="font-size:18px;font-weight:500;color:#D97706">~150억</div>
-      <div style="font-size:11px;color:var(--text-muted)">시리즈B+ · 매출 100억+</div>
-    </div>
-    <div onclick="showRoadmapStage(4)" id="rs4" style="cursor:pointer;border:0.5px solid var(--border);border-top:3px solid #059669;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
-      <div style="font-size:10px;font-weight:500;color:#059669;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 5</div>
-      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">공공·금융·대형 병원</div>
-      <div style="font-size:18px;font-weight:500;color:#059669">150억+</div>
-      <div style="font-size:11px;color:var(--text-muted)">규제 산업 · 조달 경로</div>
-    </div>
-  </div>
-
   <div id="roadmap-detail"></div>
 
   <div style="margin-top:20px;padding:14px 16px;background:var(--card-bg);border:0.5px solid var(--border);border-radius:var(--radius)">
