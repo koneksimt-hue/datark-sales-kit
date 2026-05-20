@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
 <title>DATARK 세일즈 키트</title>
 <style>
   :root {
@@ -31,46 +30,9 @@
     --info: #2B6CB0;
     --info-bg: #EBF8FF;
     --info-text: #2C5282;
-    --box-bg: #F7FAFC;
-    --box-bg-alt: #FFFFF0;
-    --box-border-alt: #F6E05E;
-    --datark-bg: linear-gradient(135deg, #EBF8FF 0%, #E6FFFA 100%);
-    --datark-border: #BEE3F8;
-    --datark-text: #2D3748;
-    --fq-color: var(--info);
     --sidebar-w: 240px;
     --radius: 10px;
     --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
-  }
-
-  [data-theme="dark"] {
-    --navy: #0d1a26;
-    --navy-dark: #070e15;
-    --navy-light: #162c40;
-    --bg: #121212;
-    --card-bg: #1e1e1e;
-    --text-primary: #f7fafc;
-    --text-secondary: #cbd5e0;
-    --text-muted: #a0aec0;
-    --border: #2d3748;
-    --shadow: 0 4px 6px rgba(0,0,0,0.5);
-    
-    --danger-bg: rgba(229, 62, 62, 0.15);
-    --danger-text: #fc8181;
-    --warning-bg: rgba(221, 107, 32, 0.15);
-    --warning-text: #fbd38d;
-    --success-bg: rgba(47, 133, 90, 0.15);
-    --success-text: #9ae6b4;
-    --info-bg: rgba(43, 108, 176, 0.15);
-    --info-text: #90cdf4;
-    --box-bg: rgba(255,255,255,0.05);
-    --box-bg-alt: rgba(246,224,94,0.1);
-    --box-border-alt: rgba(246,224,94,0.3);
-    --datark-bg: linear-gradient(135deg, rgba(43,108,176,0.15) 0%, rgba(47,133,90,0.15) 100%);
-    --datark-border: rgba(255,255,255,0.1);
-    --datark-text: var(--text-primary);
-    --fq-color: var(--success-text);
-    --cyan-dim: rgba(0,201,167,0.25);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -79,18 +41,14 @@
   /* ── SIDEBAR ── */
   .sidebar {
     width: var(--sidebar-w);
-    height: 100vh;
+    min-height: 100vh;
     background: var(--navy);
     position: fixed;
-    top: 0; left: 0; bottom: 0;
+    top: 0; left: 0;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     z-index: 100;
-    transition: transform 0.3s ease;
-  }
-  .sidebar.collapsed {
-    transform: translateX(-100%);
   }
   .sidebar-logo {
     padding: 22px 20px 18px;
@@ -104,16 +62,7 @@
     border: 1px solid rgba(0,201,167,0.3);
   }
   .nav-section { padding: 14px 12px 4px; }
-  .nav-section-label { 
-    font-size: 15px; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: .08em; 
-    padding: 6px 8px; margin-bottom: 4px; 
-    display: flex; justify-content: space-between; align-items: center;
-    cursor: pointer; user-select: none; border-radius: 6px; transition: background 0.15s;
-  }
-  .nav-section-label:hover { background: rgba(255,255,255,0.05); }
-  .nav-chevron { font-size: 9px; transition: transform 0.2s; }
-  .nav-section.collapsed .nav-chevron { transform: rotate(-90deg); }
-  .nav-section.collapsed .nav-section-items { display: none; }
+  .nav-section-label { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: .08em; padding: 0 8px; margin-bottom: 4px; }
   .nav-item {
     display: flex; align-items: center; gap: 10px;
     padding: 9px 10px; border-radius: 7px; cursor: pointer;
@@ -122,44 +71,13 @@
   }
   .nav-item:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); }
   .nav-item.active { background: rgba(0,201,167,0.18); color: var(--cyan); font-weight: 500; }
-  .sidebar-footer { padding: 14px 16px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 11px; color: rgba(255,255,255,0.3); margin-top: auto; }
+  .nav-item .nav-badge { margin-left: auto; font-size: 10px; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.5); padding: 2px 7px; border-radius: 10px; }
+  .nav-item.active .nav-badge { background: rgba(0,201,167,0.25); color: var(--cyan); }
+  .sidebar-footer { margin-top: auto; padding: 14px 16px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 11px; color: rgba(255,255,255,0.3); }
 
   /* ── MAIN ── */
-  .main { margin-left: var(--sidebar-w); flex: 1; min-height: 100vh; transition: margin-left 0.3s ease; }
-  .main.expanded { margin-left: 0; }
-  .main-top-bar {
-    padding: 20px 32px 0 32px;
-    display: flex;
-    align-items: center;
-    max-width: 900px;
-  }
-  .sidebar-toggle {
-    background: transparent;
-    border: 1px solid var(--border);
-    cursor: pointer;
-    padding: 6px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-    transition: all 0.15s;
-    background: var(--card-bg);
-  }
-  .sidebar-toggle:hover {
-    background: var(--box-bg);
-  }
-  .sidebar-toggle svg {
-    width: 18px;
-    height: 18px;
-  }
-  .theme-switch { position: fixed; top: 24px; right: 32px; z-index: 1100; display: inline-block; width: 44px; height: 24px; }
-  .theme-switch input { opacity: 0; width: 0; height: 0; }
-  .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--border); transition: .3s; border-radius: 24px; }
-  .slider:before { position: absolute; content: "☀️"; font-size: 11px; display: flex; align-items: center; justify-content: center; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
-  input:checked + .slider { background-color: var(--navy-light); border-color: var(--navy-light); }
-  input:checked + .slider:before { transform: translateX(20px); content: "🌙"; background-color: #1e1e1e; }
-  .page { display: none; padding: 16px 32px 48px; max-width: 900px; }
+  .main { margin-left: var(--sidebar-w); flex: 1; min-height: 100vh; }
+  .page { display: none; padding: 28px 32px 48px; max-width: 900px; }
   .page.active { display: block; }
 
   /* ── PAGE HEADER ── */
@@ -189,7 +107,7 @@
   .badge-danger { background: var(--danger-bg); color: var(--danger-text); }
   .badge-warning { background: var(--warning-bg); color: var(--warning-text); }
   .badge-info { background: var(--info-bg); color: var(--info-text); }
-  .badge-gray { background: var(--box-bg); color: var(--text-muted); border: 1px solid var(--border); }
+  .badge-gray { background: #F7FAFC; color: var(--text-muted); border: 1px solid var(--border); }
   .ind-chevron { font-size: 14px; color: var(--text-muted); transition: transform .2s; margin-left: 6px; }
   .ind-card.open .ind-chevron { transform: rotate(180deg); }
   .ind-body { display: none; padding: 0 16px 16px; }
@@ -197,11 +115,11 @@
   .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 12px; padding-top: 4px; }
   .detail-label { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
   .file-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-  .file-tag { font-size: 11px; padding: 3px 9px; border-radius: 5px; background: var(--box-bg); color: var(--text-secondary); border: 1px solid var(--border); font-family: 'Menlo', 'Consolas', monospace; }
+  .file-tag { font-size: 11px; padding: 3px 9px; border-radius: 5px; background: #F7FAFC; color: var(--text-secondary); border: 1px solid var(--border); font-family: 'Menlo', 'Consolas', monospace; }
   .impact-text { font-size: 13px; color: var(--text-primary); line-height: 1.65; }
-  .datark-box { background: var(--datark-bg); border: 1px solid var(--datark-border); border-radius: 8px; padding: 11px 13px; }
+  .datark-box { background: linear-gradient(135deg, #EBF8FF 0%, #E6FFFA 100%); border: 1px solid #BEE3F8; border-radius: 8px; padding: 11px 13px; }
   .datark-label { font-size: 10px; font-weight: 600; color: var(--info); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 5px; }
-  .datark-text { font-size: 13px; color: var(--datark-text); line-height: 1.6; }
+  .datark-text { font-size: 13px; color: #2D3748; line-height: 1.6; }
 
   /* ── SCRIPT CARDS ── */
   .script-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; box-shadow: var(--shadow); transition: border-color .15s; }
@@ -229,18 +147,15 @@
   .hook-box { border-radius: 8px; padding: 11px 14px; margin-bottom: 13px; }
   .hook-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 5px; }
   .hook-text { font-size: 13px; font-weight: 600; line-height: 1.5; font-style: italic; }
-  .hook-common { background: rgba(160,174,192,0.15); }
-  .hook-finance, .hook-medical { background: var(--danger-bg); }
-  .hook-mfg { background: var(--warning-bg); }
-  .hook-legal { background: rgba(107,70,193,0.15); }
+  .hook-common, .hook-finance, .hook-medical, .hook-mfg, .hook-legal { background: #F7FAFC; }
   .hook-common .hook-label { color: var(--text-muted); }
   .hook-common .hook-text { color: var(--text-primary); }
   .hook-finance .hook-label, .hook-medical .hook-label { color: var(--danger-text); }
   .hook-finance .hook-text, .hook-medical .hook-text { color: var(--danger-text); }
   .hook-mfg .hook-label { color: var(--warning-text); }
   .hook-mfg .hook-text { color: var(--warning-text); }
-  .hook-legal .hook-label { color: #805ad5; }
-  .hook-legal .hook-text { color: #805ad5; }
+  .hook-legal .hook-label { color: #6B46C1; }
+  .hook-legal .hook-text { color: #6B46C1; }
   .hook-price { background: var(--warning-bg); }
   .hook-price .hook-label { color: var(--warning-text); }
   .hook-price .hook-text { color: var(--warning-text); }
@@ -249,34 +164,34 @@
   .hook-stake .hook-text { color: var(--info-text); }
 
   .logic-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 13px; }
-  .logic-card { background: var(--box-bg); border-radius: 7px; padding: 10px 12px; border: 1px solid var(--border); }
+  .logic-card { background: #F7FAFC; border-radius: 7px; padding: 10px 12px; border: 1px solid var(--border); }
   .logic-k { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
   .logic-v { font-size: 12px; color: var(--text-primary); line-height: 1.55; }
 
   .s-label { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin: 13px 0 6px; }
   .s-block { font-size: 13px; color: var(--text-primary); line-height: 1.8; border-left: 3px solid var(--cyan); padding-left: 13px; }
-  .s-block b { font-weight: 600; color: var(--text-primary); }
+  .s-block b { font-weight: 600; color: var(--navy); }
 
-  .fq-box { margin-top: 13px; border: 1px solid var(--border); border-radius: 8px; padding: 11px 13px; background: var(--box-bg); }
+  .fq-box { margin-top: 13px; border: 1px solid var(--border); border-radius: 8px; padding: 11px 13px; background: #F7FAFC; }
   .fq-label { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 5px; }
-  .fq-text { font-size: 13px; color: var(--fq-color); line-height: 1.6; }
+  .fq-text { font-size: 13px; color: var(--info); line-height: 1.6; }
 
-  .tip-box { margin-top: 11px; background: var(--box-bg-alt); border: 1px solid var(--box-border-alt); border-radius: 8px; padding: 10px 13px; font-size: 12px; color: var(--warning-text); line-height: 1.65; }
+  .tip-box { margin-top: 11px; background: #FFFFF0; border: 1px solid #F6E05E; border-radius: 8px; padding: 10px 13px; font-size: 12px; color: #744210; line-height: 1.65; }
   .tip-box b { font-weight: 600; }
 
   .roi-table { width: 100%; border-collapse: collapse; margin: 10px 0 13px; font-size: 12px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-  .roi-table th { background: var(--box-bg); color: var(--text-secondary); font-weight: 600; padding: 8px 12px; text-align: left; font-size: 11px; border-bottom: 1px solid var(--border); }
+  .roi-table th { background: #F7FAFC; color: var(--text-secondary); font-weight: 600; padding: 8px 12px; text-align: left; font-size: 11px; border-bottom: 1px solid var(--border); }
   .roi-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--text-primary); vertical-align: top; }
   .roi-table tr:last-child td { border-bottom: none; }
   .roi-table .t-danger { color: var(--danger-text); font-weight: 600; }
   .roi-table .t-success { color: var(--success-text); font-weight: 600; }
 
   .path-row { display: flex; gap: 0; margin: 10px 0 14px; overflow-x: auto; }
-  .path-step { flex: 1; min-width: 90px; padding: 9px 8px; background: var(--box-bg); font-size: 11px; color: var(--text-secondary); text-align: center; border: 1px solid var(--border); border-right: none; }
+  .path-step { flex: 1; min-width: 90px; padding: 9px 8px; background: #F7FAFC; font-size: 11px; color: var(--text-secondary); text-align: center; border: 1px solid var(--border); border-right: none; }
   .path-step:first-child { border-radius: 7px 0 0 7px; }
   .path-step:last-child { border-right: 1px solid var(--border); border-radius: 0 7px 7px 0; }
-  .path-step b { display: block; font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
-  .path-arrow { display: flex; align-items: center; color: var(--text-muted); font-size: 14px; background: var(--box-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0 4px; }
+  .path-step b { display: block; font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+  .path-arrow { display: flex; align-items: center; color: var(--text-muted); font-size: 14px; background: #F7FAFC; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0 4px; }
 
   .page-divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
 
@@ -286,65 +201,6 @@
   .cat-title { font-size: 16px; font-weight: 700; color: var(--text-primary); }
   .cat-sub { font-size: 12px; color: var(--text-secondary); margin-top: 1px; }
   .cat-count { margin-left: auto; font-size: 11px; color: var(--text-muted); background: var(--bg); border: 1px solid var(--border); padding: 2px 9px; border-radius: 10px; }
-
-  /* News Tabs & Cards */
-  .news-dropdown-container { position: relative; margin-bottom: 20px; width: 100%; max-width: 340px; }
-  .news-dropdown-trigger { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text-primary); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow); outline: none; }
-  .news-dropdown-trigger:hover { border-color: var(--cyan); background: var(--box-bg); }
-  .news-dropdown-trigger .dropdown-chevron { font-size: 10px; color: var(--text-muted); transition: transform 0.2s; }
-  .news-dropdown-container.open .dropdown-chevron { transform: rotate(180deg); }
-  .news-dropdown-menu { position: absolute; top: 100%; left: 0; right: 0; margin-top: 6px; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 10; display: none; max-height: 300px; overflow-y: auto; padding: 6px; }
-  .news-dropdown-container.open .news-dropdown-menu { display: block; }
-  .news-dropdown-item { padding: 10px 14px; border-radius: 6px; color: var(--text-secondary); font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 8px; }
-  .news-dropdown-item:hover { background: var(--box-bg); color: var(--text-primary); }
-  .news-dropdown-item.active { background: var(--cyan-dim); color: var(--cyan); font-weight: 600; }
-  .news-list { display: none; flex-direction: column; gap: 12px; }
-  .news-list.active { display: flex; }
-  .news-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; gap: 10px; }
-  .news-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); border-color: var(--cyan); }
-  .news-meta { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-muted); }
-  .news-source { font-weight: 600; color: var(--navy); display: flex; align-items: center; gap: 6px; }
-  [data-theme="dark"] .news-source { color: var(--info-text); }
-  .news-date { color: var(--text-muted); }
-  .news-tag { background: var(--box-bg); padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; border: 1px solid var(--border); color: var(--text-secondary); }
-  .news-title { font-size: 15px; font-weight: 700; color: var(--text-primary); line-height: 1.4; }
-  .news-summary { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
-  .news-link { align-self: flex-start; font-size: 13px; font-weight: 600; color: var(--info); text-decoration: none; padding-top: 6px; display: inline-flex; align-items: center; gap: 4px;}
-  .news-link:hover { text-decoration: underline; color: var(--cyan); }
-  /* ── MOBILE RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .main { margin-left: 0 !important; }
-    .main.expanded { margin-left: 0 !important; }
-    .sidebar { box-shadow: 2px 0 10px rgba(0,0,0,0.1); width: 260px; }
-    .sidebar-toggle {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 54px;
-      height: 54px;
-      border-radius: 27px;
-      background: var(--card-bg);
-      color: var(--text-primary);
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      border: 2px solid var(--text-primary);
-    }
-    .sidebar-toggle svg {
-      stroke: var(--text-primary);
-      width: 24px;
-      height: 24px;
-    }
-    .stat-row {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    .page {
-      padding: 16px 16px 80px;
-    }
-    .main-top-bar {
-      padding: 16px 16px 0;
-    }
-  }
 </style>
 </head>
 <body>
@@ -358,86 +214,65 @@
   </div>
 
   <div class="nav-section">
-    <div class="nav-section-label" onclick="toggleNavSection(this)">시장 분석 <span class="nav-chevron">▼</span></div>
-    <div class="nav-section-items">
-      <div class="nav-item active" onclick="showPage('industry')">
-        파일 의존도 분석
-      </div>
+    <div class="nav-section-label">시장 분석</div>
+    <div class="nav-item active" onclick="showPage('industry')">
+      파일 의존도 분석
+      <span class="nav-badge">9개</span>
+    </div>
       <div class="nav-item" onclick="showPage('roadmap')">
         1~5단계 진입 전략
+        <span class="nav-badge">Stage 1–5</span>
       </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">공통 반박</div>
+    <div class="nav-item" onclick="showPage('common')">
+      공통 반박 스크립트
+      <span class="nav-badge">C1–C5</span>
     </div>
   </div>
 
   <div class="nav-section">
-    <div class="nav-section-label" onclick="toggleNavSection(this)">ISMS 세그먼트 <span class="nav-chevron">▼</span></div>
-    <div class="nav-section-items">
-      <div class="nav-item" onclick="showPage('isms')">
-        ISMS 인증 추진 기업
-      </div>
+    <div class="nav-section-label">산업별 반박</div>
+    <div class="nav-item" onclick="showPage('finance')">
+      금융·보험
+      <span class="nav-badge">F1–F2</span>
+    </div>
+    <div class="nav-item" onclick="showPage('medical')">
+      의료·병원
+      <span class="nav-badge">M1–M2</span>
+    </div>
+    <div class="nav-item" onclick="showPage('mfg')">
+      제조업
+      <span class="nav-badge">P1–P2</span>
+    </div>
+    <div class="nav-item" onclick="showPage('legal')">
+      법무
+      <span class="nav-badge">L1–L2</span>
     </div>
   </div>
 
   <div class="nav-section">
-    <div class="nav-section-label" onclick="toggleNavSection(this)">공통 반박 <span class="nav-chevron">▼</span></div>
-    <div class="nav-section-items">
-      <div class="nav-item" onclick="showPage('common')">
-        공통 반박 스크립트
-      </div>
+    <div class="nav-section-label">협상 전략</div>
+    <div class="nav-item" onclick="showPage('price')">
+      가격 협상
+      <span class="nav-badge">P1–P4</span>
+    </div>
+    <div class="nav-item" onclick="showPage('stake')">
+      결정권자 대응
+      <span class="nav-badge">S1–S5</span>
     </div>
   </div>
 
   <div class="nav-section">
-    <div class="nav-section-label" onclick="toggleNavSection(this)">산업별 반박 <span class="nav-chevron">▼</span></div>
-    <div class="nav-section-items">
-      <div class="nav-item" onclick="showPage('finance')">
-        금융·보험
-      </div>
-      <div class="nav-item" onclick="showPage('medical')">
-        의료·병원
-      </div>
-      <div class="nav-item" onclick="showPage('mfg')">
-        제조업
-      </div>
-      <div class="nav-item" onclick="showPage('legal')">
-        법무
-      </div>
+    <div class="nav-section-label">ISMS 세그먼트</div>
+    <div class="nav-item" onclick="showPage('isms')">
+      ISMS 인증 추진 기업
+      <span class="nav-badge">시리즈 B+</span>
     </div>
   </div>
 
-  <div class="nav-section">
-    <div class="nav-section-label" onclick="toggleNavSection(this)">업종별 뉴스 <span class="nav-chevron">▼</span></div>
-    <div class="nav-section-items">
-      <div class="nav-item" onclick="showPage('industry-news')">
-        보도자료
-      </div>
-    </div>
-  </div>
-
-
-  <div class="nav-section">
-    <div class="nav-section-label" onclick="toggleNavSection(this)">협상 전략 <span class="nav-chevron">▼</span></div>
-    <div class="nav-section-items">
-      <div class="nav-item" onclick="showPage('price')">
-        가격 협상
-      </div>
-      <div class="nav-item" onclick="showPage('stake')">
-        결정권자 대응
-      </div>
-    </div>
-  </div>
-
-  <div class="nav-section">
-    <div class="nav-section-label" onclick="toggleNavSection(this)">코넥시 소개 <span class="nav-chevron">▼</span></div>
-    <div class="nav-section-items">
-      <div class="nav-item" onclick="window.open('https://koneksi.co.kr', '_blank')">
-        홈페이지 ↗
-      </div>
-      <div class="nav-item" onclick="window.open('https://drive.google.com/drive/folders/1E7Tq5LoA2BlL0ejrTXNsVGRQs0cElild?usp=sharing', '_blank')">
-        제품소개 ↗
-      </div>
-    </div>
-  </div>
   <div class="sidebar-footer">
     문의: info@koneksi.co.kr<br>Koneksi Co., Ltd. (코넥시)
   </div>
@@ -445,19 +280,6 @@
 
 <!-- ═══════════ MAIN ═══════════ -->
 <main class="main">
-  <div class="main-top-bar">
-    <button class="sidebar-toggle" onclick="toggleSidebar()" title="사이드바 토글">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-        <line x1="9" y1="3" x2="9" y2="21"></line>
-      </svg>
-    </button>
-    <div style="flex:1;"></div>
-    <label class="theme-switch" title="모드 전환">
-      <input type="checkbox" class="theme-checkbox" onchange="toggleTheme()">
-      <span class="slider"></span>
-    </label>
-  </div>
 
 <!-- ────────────── PAGE: 파일 의존도 분석 ────────────── -->
 <div class="page active" id="pg-industry">
@@ -474,8 +296,8 @@
     </div>
     <div class="stat-card">
       <div class="stat-label">평균 다운타임 비용</div>
-      <div class="stat-num">분당 $5,600</div>
-      <div class="stat-sub">금융·의료는 $300K+/hr<br>Gartner 2024</div>
+      <div class="stat-num">$5,600</div>
+      <div class="stat-sub">분당 / 금융·의료는 $300K+/hr<br>Gartner 2024</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">글로벌 평균 침해 비용</div>
@@ -824,75 +646,6 @@
   </div>
 </div>
 
-<!-- ────────────── PAGE: 1~5단계 진입 전략 ────────────── -->
-<div class="page" id="pg-roadmap">
-  <div class="page-header">
-    <div class="page-title">1~5단계 진입 전략</div>
-    <div class="page-desc">파일 자체관리 기업 — 진입 난이도·데이터 규모별 세그먼트 분석 및 인증·채널 준비 요건</div>
-  </div>
-
-  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px">
-    <div onclick="showRoadmapStage(0)" id="rs0" style="cursor:pointer;border:1px solid #2563EB;border-top:3px solid #2563EB;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
-      <div style="font-size:10px;font-weight:500;color:#2563EB;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 1</div>
-      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">소형 전문직 사무소</div>
-      <div style="font-size:18px;font-weight:500;color:#2563EB">~3억</div>
-      <div style="font-size:11px;color:var(--text-muted)">5~20인 · NAS 자체관리</div>
-    </div>
-    <div onclick="showRoadmapStage(1)" id="rs1" style="cursor:pointer;border:0.5px solid var(--border);border-top:3px solid #7C3AED;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
-      <div style="font-size:10px;font-weight:500;color:#7C3AED;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 2</div>
-      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">미디어·콘텐츠 제작사</div>
-      <div style="font-size:18px;font-weight:500;color:#7C3AED">~15억</div>
-      <div style="font-size:11px;color:var(--text-muted)">10~50인 · 대용량 파일</div>
-    </div>
-    <div onclick="showRoadmapStage(2)" id="rs2" style="cursor:pointer;border:0.5px solid var(--border);border-top:3px solid #DC2626;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
-      <div style="font-size:10px;font-weight:500;color:#DC2626;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 3</div>
-      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">중견 제조·건설</div>
-      <div style="font-size:18px;font-weight:500;color:#DC2626">~50억</div>
-      <div style="font-size:11px;color:var(--text-muted)">50~200인 · 도면 파일</div>
-    </div>
-    <div onclick="showRoadmapStage(3)" id="rs3" style="cursor:pointer;border:0.5px solid var(--border);border-top:3px solid #D97706;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
-      <div style="font-size:10px;font-weight:500;color:#D97706;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 4</div>
-      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">ISMS 의무 대상 기업</div>
-      <div style="font-size:18px;font-weight:500;color:#D97706">~150억</div>
-      <div style="font-size:11px;color:var(--text-muted)">시리즈B+ · 매출 100억+</div>
-    </div>
-    <div onclick="showRoadmapStage(4)" id="rs4" style="cursor:pointer;border:0.5px solid var(--border);border-top:3px solid #059669;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
-      <div style="font-size:10px;font-weight:500;color:#059669;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 5</div>
-      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">공공·금융·대형 병원</div>
-      <div style="font-size:18px;font-weight:500;color:#059669">150억+</div>
-      <div style="font-size:11px;color:var(--text-muted)">규제 산업 · 조달 경로</div>
-    </div>
-  </div>
-
-  <div id="roadmap-detail"></div>
-
-  <div style="margin-top:20px;padding:14px 16px;background:var(--card-bg);border:0.5px solid var(--border);border-radius:var(--radius)">
-    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">인증·준비 타임라인</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
-      <div style="padding:10px 12px;background:var(--bg);border-radius:var(--radius);border-left:3px solid #2563EB">
-        <div style="font-size:11px;font-weight:500;color:#2563EB;margin-bottom:4px">지금~6개월</div>
-        <div style="font-size:12px;color:var(--text-primary);line-height:1.6">시놀로지·큐냅 파트너 계약<br>POC 패키지 표준화<br>Stage 1~2 레퍼런스 확보</div>
-      </div>
-      <div style="padding:10px 12px;background:var(--bg);border-radius:var(--radius);border-left:3px solid #7C3AED">
-        <div style="font-size:11px;font-weight:500;color:#7C3AED;margin-bottom:4px">6~12개월</div>
-        <div style="font-size:12px;color:var(--text-primary);line-height:1.6">ISO 27001 준비 착수<br>ISMS 컨설팅사 파트너 3곳<br>GS 인증 준비</div>
-      </div>
-      <div style="padding:10px 12px;background:var(--bg);border-radius:var(--radius);border-left:3px solid #DC2626">
-        <div style="font-size:11px;font-weight:500;color:#DC2626;margin-bottom:4px">12~18개월</div>
-        <div style="font-size:12px;color:var(--text-primary);line-height:1.6">ISO 27001 취득<br>GS 인증 취득<br>CSAP 신청 착수</div>
-      </div>
-      <div style="padding:10px 12px;background:var(--bg);border-radius:var(--radius);border-left:3px solid #059669">
-        <div style="font-size:11px;font-weight:500;color:#059669;margin-bottom:4px">18~30개월</div>
-        <div style="font-size:12px;color:var(--text-primary);line-height:1.6">CSAP 취득<br>CC 인증 착수<br>나라장터 MAS 등록</div>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-top:12px;font-size:11px;color:var(--text-muted);line-height:1.7;padding:12px 0;border-top:0.5px solid var(--border)">
-    <b>출처</b> — KISA 중소기업 랜섬웨어 피해지원 보고서 (2024) · 아시아경제 2025.06 (SMB 82% 피해) · 매일경제 2026.04 · 시놀로지 공식파트너(코아아이티·테온·디지탈지앤티) · 큐냅코리아 테크데이 2025 · 가비아 AWS SMB · 메가존클라우드·베스핀글로벌 MSP · 디지털타임스 CSAP·CC인증 개선 (2024)
-  </div>
-</div>
-
 <!-- ────────────── PAGE: 공통 반박 ────────────── -->
 <div class="page" id="pg-common">
   <div class="page-header">
@@ -972,6 +725,75 @@
   <div id="scripts-stake"></div>
 </div>
 
+<!-- ────────────── PAGE: 1~5단계 진입 전략 ────────────── -->
+<div class="page" id="pg-roadmap">
+  <div class="page-header">
+    <div class="page-title">1~5단계 진입 전략</div>
+    <div class="page-desc">파일 자체관리 기업 — 진입 난이도·데이터 규모별 세그먼트 분석 및 인증·채널 준비 요건</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px">
+    <div onclick="showRoadmapStage(0)" id="rs0" style="cursor:pointer;border:1px solid #2563EB;border-top:3px solid #2563EB;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
+      <div style="font-size:10px;font-weight:500;color:#2563EB;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 1</div>
+      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">소형 전문직 사무소</div>
+      <div style="font-size:18px;font-weight:500;color:#2563EB">~3억</div>
+      <div style="font-size:11px;color:var(--text-muted)">5~20인 · NAS 자체관리</div>
+    </div>
+    <div onclick="showRoadmapStage(1)" id="rs1" style="cursor:pointer;border:0.5px solid var(--border);border-top:3px solid #7C3AED;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
+      <div style="font-size:10px;font-weight:500;color:#7C3AED;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 2</div>
+      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">미디어·콘텐츠 제작사</div>
+      <div style="font-size:18px;font-weight:500;color:#7C3AED">~15억</div>
+      <div style="font-size:11px;color:var(--text-muted)">10~50인 · 대용량 파일</div>
+    </div>
+    <div onclick="showRoadmapStage(2)" id="rs2" style="cursor:pointer;border:0.5px solid var(--border);border-top:3px solid #DC2626;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
+      <div style="font-size:10px;font-weight:500;color:#DC2626;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 3</div>
+      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">중견 제조·건설</div>
+      <div style="font-size:18px;font-weight:500;color:#DC2626">~50억</div>
+      <div style="font-size:11px;color:var(--text-muted)">50~200인 · 도면 파일</div>
+    </div>
+    <div onclick="showRoadmapStage(3)" id="rs3" style="cursor:pointer;border:0.5px solid var(--border);border-top:3px solid #D97706;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
+      <div style="font-size:10px;font-weight:500;color:#D97706;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 4</div>
+      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">ISMS 의무 대상 기업</div>
+      <div style="font-size:18px;font-weight:500;color:#D97706">~150억</div>
+      <div style="font-size:11px;color:var(--text-muted)">시리즈B+ · 매출 100억+</div>
+    </div>
+    <div onclick="showRoadmapStage(4)" id="rs4" style="cursor:pointer;border:0.5px solid var(--border);border-top:3px solid #059669;border-radius:var(--radius);padding:12px 14px;background:var(--card-bg)">
+      <div style="font-size:10px;font-weight:500;color:#059669;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Stage 5</div>
+      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3">공공·금융·대형 병원</div>
+      <div style="font-size:18px;font-weight:500;color:#059669">150억+</div>
+      <div style="font-size:11px;color:var(--text-muted)">규제 산업 · 조달 경로</div>
+    </div>
+  </div>
+
+  <div id="roadmap-detail"></div>
+
+  <div style="margin-top:20px;padding:14px 16px;background:var(--card-bg);border:0.5px solid var(--border);border-radius:var(--radius)">
+    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">인증·준비 타임라인</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+      <div style="padding:10px 12px;background:var(--bg);border-radius:var(--radius);border-left:3px solid #2563EB">
+        <div style="font-size:11px;font-weight:500;color:#2563EB;margin-bottom:4px">지금~6개월</div>
+        <div style="font-size:12px;color:var(--text-primary);line-height:1.6">시놀로지·큐냅 파트너 계약<br>POC 패키지 표준화<br>Stage 1~2 레퍼런스 확보</div>
+      </div>
+      <div style="padding:10px 12px;background:var(--bg);border-radius:var(--radius);border-left:3px solid #7C3AED">
+        <div style="font-size:11px;font-weight:500;color:#7C3AED;margin-bottom:4px">6~12개월</div>
+        <div style="font-size:12px;color:var(--text-primary);line-height:1.6">ISO 27001 준비 착수<br>ISMS 컨설팅사 파트너 3곳<br>GS 인증 준비</div>
+      </div>
+      <div style="padding:10px 12px;background:var(--bg);border-radius:var(--radius);border-left:3px solid #DC2626">
+        <div style="font-size:11px;font-weight:500;color:#DC2626;margin-bottom:4px">12~18개월</div>
+        <div style="font-size:12px;color:var(--text-primary);line-height:1.6">ISO 27001 취득<br>GS 인증 취득<br>CSAP 신청 착수</div>
+      </div>
+      <div style="padding:10px 12px;background:var(--bg);border-radius:var(--radius);border-left:3px solid #059669">
+        <div style="font-size:11px;font-weight:500;color:#059669;margin-bottom:4px">18~30개월</div>
+        <div style="font-size:12px;color:var(--text-primary);line-height:1.6">CSAP 취득<br>CC 인증 착수<br>나라장터 MAS 등록</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:12px;font-size:11px;color:var(--text-muted);line-height:1.7;padding:12px 0;border-top:0.5px solid var(--border)">
+    <b>출처</b> — KISA 중소기업 랜섬웨어 피해지원 보고서 (2024) · 아시아경제 2025.06 (SMB 82% 피해) · 매일경제 2026.04 · 시놀로지 공식파트너(코아아이티·테온·디지탈지앤티) · 큐냅코리아 테크데이 2025 · 가비아 AWS SMB · 메가존클라우드·베스핀글로벌 MSP · 디지털타임스 CSAP·CC인증 개선 (2024)
+  </div>
+</div>
+
 <!-- ────────────── PAGE: ISMS 인증 세그먼트 ────────────── -->
 <div class="page" id="pg-isms">
   <div class="page-header">
@@ -1026,12 +848,12 @@
   <div class="section-label" style="margin-bottom:10px">DATARK가 직접 대응하는 ISMS 심사 항목</div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
     <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)">
-      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px">2.9.3 백업 및 복구관리</div>
+      <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px">2.9.3 백업 및 복구관리</div>
       <div style="font-size:12px;color:var(--text-secondary);line-height:1.75;margin-bottom:10px">백업 대상·주기·방법·절차 수립 / 정기적 복구 테스트 실시 / 중요정보 <b>물리적으로 다른 장소에 소산 백업</b></div>
       <div style="font-size:11px;background:var(--success-bg);color:var(--success-text);padding:6px 10px;border-radius:6px;font-weight:600">DATARK 대응: Private IPFS 다중 노드 = 소산 요건 자동 충족 + 복구 테스트 리포트 자동화</div>
     </div>
     <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)">
-      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px">2.12 재해복구</div>
+      <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px">2.12 재해복구</div>
       <div style="font-size:12px;color:var(--text-secondary);line-height:1.75;margin-bottom:10px">재해·재난 대비 안전조치 / 재해 복구 시험 및 개선 / RTO·RPO 목표 수립 및 실증</div>
       <div style="font-size:11px;background:var(--success-bg);color:var(--success-text);padding:6px 10px;border-radius:6px;font-weight:600">DATARK 대응: RTO 15분·RPO ~0초 실증 가능 / 재해복구 시험 기록 심사 제출용 리포트 제공</div>
     </div>
@@ -1044,160 +866,6 @@
     <b>출처</b> — KISA ISMS-P 누리집 (2026.04, 인증 1,264건) · 아이티데일리 ISMS-P 개편 (2026.04) · Alchera ISMS 의무 대상 분석 · Callabo B2B SaaS 보안 인증 가이드 (2024) · 유니콘팩토리 레몬베이스 ISMS 취득 (2025.03) · 데일리경제 크몽 ISMS 취득 (2025.04) · secucon ISMS 의무 대상 공문 분석
   </div>
 </div>
-
-<!-- ────────────── PAGE: 업종별 뉴스 ────────────── -->
-<div class="page" id="pg-industry-news">
-  <div class="page-header">
-    <div class="page-title">업종별 주요 뉴스</div>
-    <div class="page-desc">최근 산업별 랜섬웨어 피해, 정보보호 인증 의무화 동향 및 DR 관련 주요 뉴스 모음입니다.</div>
-  </div>
-
-  <div class="news-dropdown-container">
-    <button class="news-dropdown-trigger" onclick="toggleNewsDropdown()">
-      <span id="selected-news-tab-label">💳 금융 · 보험</span>
-      <span class="dropdown-chevron">▼</span>
-    </button>
-    <div class="news-dropdown-menu" id="news-dropdown-menu">
-      <div class="news-dropdown-item active" onclick="selectNewsTab(this, 'finance')">💳 금융 · 보험</div>
-      <div class="news-dropdown-item" onclick="selectNewsTab(this, 'medical')">🏥 의료 · 병원</div>
-      <div class="news-dropdown-item" onclick="selectNewsTab(this, 'mfg')">⚙️ 제조업</div>
-      <div class="news-dropdown-item" onclick="selectNewsTab(this, 'legal')">⚖️ 법무 · 법무법인</div>
-      <div class="news-dropdown-item" onclick="selectNewsTab(this, 'const')">🏗️ 건설 · 건축 · 엔지니어링</div>
-      <div class="news-dropdown-item" onclick="selectNewsTab(this, 'media')">🎬 미디어 · 방송 · 엔터테인먼트</div>
-      <div class="news-dropdown-item" onclick="selectNewsTab(this, 'public')">🏛️ 공공기관 · 지자체</div>
-      <div class="news-dropdown-item" onclick="selectNewsTab(this, 'consult')">📋 회계 · 세무 · 컨설팅</div>
-      <div class="news-dropdown-item" onclick="selectNewsTab(this, 'isms')">🛡️ ISMS 인증 추진 기업</div>
-    </div>
-  </div>
-
-  <div class="news-list active" id="news-list-finance">
-    <div class="news-card">
-      <div class="news-meta">
-        <div class="news-source">전자신문 <span class="news-tag">금융보안</span></div>
-        <div class="news-date">2025.11.03</div>
-      </div>
-      <div class="news-title">금융권 DR 의무화 강화... "데이터 무손실 복구 체계 필수"</div>
-      <div class="news-summary">금융감독원이 최근 급증하는 랜섬웨어 위협에 대응하여 금융권 재해복구(DR) 가이드라인을 전면 개정했다. 특히 실시간 데이터 동기화와 망분리 환경에서의 백업 소산 요건이 크게 강화되었다.</div>
-      <a href="#" class="news-link">원문 보기 ↗</a>
-    </div>
-    <div class="news-card">
-      <div class="news-meta">
-        <div class="news-source">보안뉴스 <span class="news-tag">랜섬웨어</span></div>
-        <div class="news-date">2025.09.15</div>
-      </div>
-      <div class="news-title">Qilin 랜섬웨어 그룹, 국내 중소형 금융사 집중 타격</div>
-      <div class="news-summary">Qilin 그룹의 최신 랜섬웨어 변종이 국내 캐피털 및 저축은행 3곳의 시스템을 마비시켰다. 이들 기업은 백업 서버까지 동시에 감염되어 복구에 심각한 차질을 빚고 있다.</div>
-      <a href="#" class="news-link">원문 보기 ↗</a>
-    </div>
-  </div>
-
-  <div class="news-list" id="news-list-medical">
-    <div class="news-card">
-      <div class="news-meta">
-        <div class="news-source">데일리시큐 <span class="news-tag">의료보안</span></div>
-        <div class="news-date">2026.01.12</div>
-      </div>
-      <div class="news-title">대형 종합병원 EMR 시스템 랜섬웨어 감염... 환자 정보 유출 비상</div>
-      <div class="news-summary">수도권 소재 종합병원의 전자의무기록(EMR) 시스템이 랜섬웨어에 감염되어 외래 진료가 전면 중단되었다. 의료법 개정으로 진료기록 백업이 의무화되었음에도 실효성 있는 DR 체계 부재가 원인으로 지목된다.</div>
-      <a href="#" class="news-link">원문 보기 ↗</a>
-    </div>
-  </div>
-
-  <div class="news-list" id="news-list-mfg">
-    <div class="news-card">
-      <div class="news-meta">
-        <div class="news-source">지디넷코리아 <span class="news-tag">스마트팩토리</span></div>
-        <div class="news-date">2025.12.08</div>
-      </div>
-      <div class="news-title">첨단 제조기업 설계도면 탈취 목적의 타겟형 랜섬웨어 기승</div>
-      <div class="news-summary">반도체 및 2차전지 부품 제조사들을 겨냥한 랜섬웨어 공격이 전년 대비 40% 증가했다. 스마트팩토리 확산에 따라 생산망(OT)과 사무망(IT)의 연결점이 공격의 통로로 악용되고 있다.</div>
-      <a href="#" class="news-link">원문 보기 ↗</a>
-    </div>
-  </div>
-
-  <div class="news-list" id="news-list-legal">
-    <div class="news-card">
-      <div class="news-meta">
-        <div class="news-source">법률신문 <span class="news-tag">리걸테크</span></div>
-        <div class="news-date">2025.10.22</div>
-      </div>
-      <div class="news-title">대형 로펌 잇단 해킹 시도... 기밀문서 유출 우려 고조</div>
-      <div class="news-summary">주요 법무법인의 소송 자료 및 M&A 기밀 문서를 노린 사이버 공격이 포착되었다. 의뢰인 정보 보호를 위해 강력한 데이터 접근 제어 및 위변조 방지 기술 도입이 로펌계의 화두로 떠올랐다.</div>
-      <a href="#" class="news-link">원문 보기 ↗</a>
-    </div>
-  </div>
-
-  <div class="news-list" id="news-list-const">
-    <div class="news-card">
-      <div class="news-meta">
-        <div class="news-source">건설경제 <span class="news-tag">건축플랫폼</span></div>
-        <div class="news-date">2025.08.30</div>
-      </div>
-      <div class="news-title">건설사 BIM 데이터 랜섬웨어 타격, 수백억 공사 지연 사태</div>
-      <div class="news-summary">대형 건설사의 클라우드 기반 BIM(건축정보모델링) 저장소가 랜섬웨어 공격을 받아 국내외 주요 현장의 공사가 일시 중단되는 사태가 발생했다. 용량이 방대한 설계 데이터의 복구에 며칠이 소요될 것으로 예상된다.</div>
-      <a href="#" class="news-link">원문 보기 ↗</a>
-    </div>
-  </div>
-
-  <div class="news-list" id="news-list-media">
-    <div class="news-card">
-      <div class="news-meta">
-        <div class="news-source">방송기술저널 <span class="news-tag">미디어보안</span></div>
-        <div class="news-date">2026.02.15</div>
-      </div>
-      <div class="news-title">엔터테인먼트사 미공개 음원/영상 유출 협박 랜섬웨어 기승</div>
-      <div class="news-summary">유명 K-POP 기획사의 미공개 컴백 자료가 랜섬웨어 그룹에 의해 암호화되고, 대가 지불 거절 시 유출하겠다는 협박 사건이 발생했다. 대용량 미디어 파일에 대한 분산 백업 솔루션 수요가 급증하고 있다.</div>
-      <a href="#" class="news-link">원문 보기 ↗</a>
-    </div>
-  </div>
-
-  <div class="news-list" id="news-list-public">
-    <div class="news-card">
-      <div class="news-meta">
-        <div class="news-source">공공뉴스 <span class="news-tag">공공망</span></div>
-        <div class="news-date">2025.07.11</div>
-      </div>
-      <div class="news-title">지자체 대국민 서비스망 장애, 백업 시스템 복구 실패로 장기화</div>
-      <div class="news-summary">지방자치단체의 행정 시스템이 랜섬웨어에 감염되었으나, 동일 네트워크에 있던 백업본마저 손상되어 대국민 민원 서비스가 3일 이상 중단되었다. 공공기관의 물리적 소산 백업 원칙 준수 여부가 도마에 올랐다.</div>
-      <a href="#" class="news-link">원문 보기 ↗</a>
-    </div>
-  </div>
-
-  <div class="news-list" id="news-list-consult">
-    <div class="news-card">
-      <div class="news-meta">
-        <div class="news-source">IT조선 <span class="news-tag">기업보안</span></div>
-        <div class="news-date">2025.11.28</div>
-      </div>
-      <div class="news-title">회계·컨설팅펌 고객 감사 자료 유출 노린 표적 공격 증가</div>
-      <div class="news-summary">상장사들의 주요 재무 데이터와 감사 보고서를 취급하는 대형 회계법인들이 해커들의 새로운 타겟이 되고 있다. 파트너급 회계사들의 이메일과 클라우드 저장소가 주 공격 대상이다.</div>
-      <a href="#" class="news-link">원문 보기 ↗</a>
-    </div>
-  </div>
-
-  <div class="news-list" id="news-list-isms">
-    <div class="news-card">
-      <div class="news-meta">
-        <div class="news-source">아이티데일리 <span class="news-tag">ISMS-P</span></div>
-        <div class="news-date">2026.04.05</div>
-      </div>
-      <div class="news-title">ISMS-P 인증 의무 대상 확대... B2B SaaS 기업 비상</div>
-      <div class="news-summary">정보보호 및 개인정보보호 관리체계(ISMS-P) 인증 의무 대상이 대폭 확대되면서 시리즈 B 이상의 B2B 스타트업들이 발등에 불이 떨어졌다. 특히 재해복구(DR) 시스템 구축에 대한 실효성 심사가 까다로워졌다.</div>
-      <a href="#" class="news-link">원문 보기 ↗</a>
-    </div>
-    <div class="news-card">
-      <div class="news-meta">
-        <div class="news-source">유니콘팩토리 <span class="news-tag">스타트업</span></div>
-        <div class="news-date">2025.03.20</div>
-      </div>
-      <div class="news-title">레몬베이스 등 주요 B2B SaaS, ISMS 인증 취득 위해 IT 인프라 전면 개편</div>
-      <div class="news-summary">주요 B2B 솔루션 기업들이 대기업 고객사 유치를 위한 필수 요건인 ISMS 인증을 획득하기 위해 인프라 보안 및 데이터 복구 체계에 대규모 투자를 단행하고 있다.</div>
-      <a href="#" class="news-link">원문 보기 ↗</a>
-    </div>
-  </div>
-</div>
-
-
 
 </main>
 
@@ -1607,22 +1275,6 @@ function toggleScript(cat, idx) {
 }
 
 // ── NAV ──────────────────────────────────────────────────
-function toggleSidebar() {
-  const sidebar = document.querySelector('.sidebar');
-  const main = document.querySelector('.main');
-  sidebar.classList.toggle('collapsed');
-  main.classList.toggle('expanded');
-  localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
-}
-
-function toggleNavSection(el) {
-  const section = el.closest('.nav-section');
-  section.classList.toggle('collapsed');
-  
-  const states = Array.from(document.querySelectorAll('.nav-section')).map(sec => sec.classList.contains('collapsed'));
-  localStorage.setItem('navSectionStates', JSON.stringify(states));
-}
-
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -1636,41 +1288,6 @@ function toggleCard(card) {
   if (!was) card.classList.add('open');
 }
 
-function toggleNewsDropdown() {
-  const container = document.querySelector('.news-dropdown-container');
-  if (container) {
-    container.classList.toggle('open');
-  }
-}
-
-function selectNewsTab(el, tabId) {
-  document.querySelectorAll('.news-dropdown-item').forEach(item => item.classList.remove('active'));
-  el.classList.add('active');
-  
-  const label = document.getElementById('selected-news-tab-label');
-  if (label) {
-    label.innerHTML = el.innerHTML;
-  }
-  
-  document.querySelectorAll('.news-list').forEach(l => l.classList.remove('active'));
-  const listEl = document.getElementById('news-list-' + tabId);
-  if (listEl) {
-    listEl.classList.add('active');
-  }
-  
-  const container = document.querySelector('.news-dropdown-container');
-  if (container) {
-    container.classList.remove('open');
-  }
-}
-
-// Close news dropdown on outside click
-document.addEventListener('click', function(e) {
-  const container = document.querySelector('.news-dropdown-container');
-  if (container && !container.contains(e.target) && !e.target.closest('.news-dropdown-trigger')) {
-    container.classList.remove('open');
-  }
-});
 
 // ── 로드맵 데이터 & 렌더 ──────────────────────────────────
 const RM_ACCENT = ['#2563EB','#7C3AED','#DC2626','#D97706','#059669'];
@@ -1819,52 +1436,6 @@ function showRoadmapStage(idx){
 }
 
 // ── INIT ──────────────────────────────────────────────────
-// Theme Initialization
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  updateThemeIcon(savedTheme);
-} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  document.documentElement.setAttribute('data-theme', 'dark');
-  updateThemeIcon('dark');
-}
-
-function toggleTheme() {
-  const checkbox = document.querySelector('.theme-checkbox');
-  const newTheme = checkbox && checkbox.checked ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-}
-
-function updateThemeIcon(theme) {
-  const checkbox = document.querySelector('.theme-checkbox');
-  if(checkbox) {
-    checkbox.checked = (theme === 'dark');
-  }
-}
-
-// Restore sidebar state
-if (window.innerWidth <= 768) {
-  document.querySelector('.sidebar').classList.add('collapsed');
-  document.querySelector('.main').classList.add('expanded');
-} else {
-  if (localStorage.getItem('sidebarCollapsed') === 'true') {
-    document.querySelector('.sidebar').classList.add('collapsed');
-    document.querySelector('.main').classList.add('expanded');
-  }
-}
-
-// Restore nav section states
-const navStatesStr = localStorage.getItem('navSectionStates');
-if (navStatesStr) {
-  try {
-    const states = JSON.parse(navStatesStr);
-    document.querySelectorAll('.nav-section').forEach((sec, idx) => {
-      if (states[idx]) sec.classList.add('collapsed');
-    });
-  } catch(e) {}
-}
-
 renderScripts('common', 'scripts-common');
 renderScripts('finance', 'scripts-finance');
 renderScripts('medical', 'scripts-medical');
