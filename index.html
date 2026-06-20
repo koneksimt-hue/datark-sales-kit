@@ -7,9 +7,9 @@
 <title>DATARK 세일즈 키트</title>
 <style>
   :root {
-    --navy: #1A3A5C;
-    --navy-dark: #112843;
-    --navy-light: #2A4D73;
+    --navy: #1D5C8A;
+    --navy-dark: #114470;
+    --navy-light: #2870A0;
     --cyan: #00C9A7;
     --cyan-dim: rgba(0,201,167,0.12);
     --white: #ffffff;
@@ -28,14 +28,14 @@
     --success: #2F855A;
     --success-bg: #F0FFF4;
     --success-text: #276749;
-    --info: #2B6CB0;
-    --info-bg: #EBF8FF;
-    --info-text: #2C5282;
+    --info: #55A4D3;
+    --info-bg: #EEF5FA;
+    --info-text: #2E7BA8;
     --box-bg: #F7FAFC;
     --box-bg-alt: #FFFFF0;
     --box-border-alt: #F6E05E;
-    --datark-bg: linear-gradient(135deg, #EBF8FF 0%, #E6FFFA 100%);
-    --datark-border: #BEE3F8;
+    --datark-bg: linear-gradient(135deg, #EEF5FA 0%, #E6FFFA 100%);
+    --datark-border: #CCE4F2;
     --datark-text: #2D3748;
     --fq-color: var(--info);
     --sidebar-w: 240px;
@@ -44,9 +44,9 @@
   }
 
   [data-theme="dark"] {
-    --navy: #0d1a26;
-    --navy-dark: #070e15;
-    --navy-light: #162c40;
+    --navy: #0B2035;
+    --navy-dark: #06131E;
+    --navy-light: #122C45;
     --bg: #121212;
     --card-bg: #1e1e1e;
     --text-primary: #f7fafc;
@@ -62,7 +62,7 @@
     --success-bg: rgba(47, 133, 90, 0.15);
     --success-text: #9ae6b4;
     --info-bg: rgba(43, 108, 176, 0.15);
-    --info-text: #90cdf4;
+    --info-text: #55A4D3;
     --box-bg: rgba(255,255,255,0.05);
     --box-bg-alt: rgba(246,224,94,0.1);
     --box-border-alt: rgba(246,224,94,0.3);
@@ -434,6 +434,14 @@
     </div>
   </div>
   <div class="nav-section">
+    <div class="nav-section-label" onclick="toggleNavSection(this)">홍보물 자료실 <span class="nav-chevron">▼</span></div>
+    <div class="nav-section-items">
+      <div class="nav-item" onclick="showPage('promo-clinic')">
+        병의원
+      </div>
+    </div>
+  </div>
+  <div class="nav-section">
     <div class="nav-section-label" onclick="showPage('glossary')">용어집</div>
   </div>
   <div class="sidebar-footer">
@@ -674,7 +682,7 @@
   <!-- Industry Card 6: 미디어 -->
   <div class="ind-card" onclick="toggleCard(this)">
     <div class="ind-head">
-      <div class="ind-icon" style="background:#EBF8FF">🎬</div>
+      <div class="ind-icon" style="background:#EEF5FA">🎬</div>
       <div class="ind-info">
         <div class="ind-name">미디어 · 방송 · 엔터테인먼트</div>
         <div class="ind-sub">방송국, 프로덕션, OTT, 게임사, 광고대행사</div>
@@ -707,7 +715,7 @@
   <!-- Industry Card 7: 공공 -->
   <div class="ind-card" onclick="toggleCard(this)">
     <div class="ind-head">
-      <div class="ind-icon" style="background:#EBF8FF">🏛️</div>
+      <div class="ind-icon" style="background:#EEF5FA">🏛️</div>
       <div class="ind-info">
         <div class="ind-name">공공기관 · 지자체</div>
         <div class="ind-sub">중앙행정기관, 지자체, 공기업, 교육기관</div>
@@ -741,7 +749,7 @@
   <!-- Industry Card 8: 회계 -->
   <div class="ind-card" onclick="toggleCard(this)">
     <div class="ind-head">
-      <div class="ind-icon" style="background:#EBF8FF">📋</div>
+      <div class="ind-icon" style="background:#EEF5FA">📋</div>
       <div class="ind-info">
         <div class="ind-name">회계 · 세무 · 컨설팅</div>
         <div class="ind-sub">회계법인, 세무법인, 경영컨설팅사</div>
@@ -774,7 +782,7 @@
   <!-- Industry Card 9: ISMS 인증 준비 기업 -->
   <div class="ind-card" onclick="toggleCard(this)">
     <div class="ind-head">
-      <div class="ind-icon" style="background:#EBF8FF">🛡️</div>
+      <div class="ind-icon" style="background:#EEF5FA">🛡️</div>
       <div class="ind-info">
         <div class="ind-name">ISMS 인증 준비 기업 (시리즈 B+)</div>
         <div class="ind-sub">핀테크, HR SaaS, 헬스테크, 이커머스, B2B SaaS — 매출 100억+ 도달 스타트업</div>
@@ -831,12 +839,12 @@
 
     <div class="news-dropdown-container" id="roadmap-dropdown-container" style="max-width: 100%; margin-bottom: 20px;">
     <div class="news-dropdown-trigger" onclick="toggleRoadmapDropdown()" style="padding: 14px 18px; font-size: 15px;">
-      <span id="roadmap-dropdown-selected"><span style="font-weight:600;color:#2563EB;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;">Stage 1</span> 소형 전문직 사무소</span>
+      <span id="roadmap-dropdown-selected"><span style="font-weight:600;color:#55A4D3;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;">Stage 1</span> 소형 전문직 사무소</span>
       <span class="dropdown-chevron">▼</span>
     </div>
     <div class="news-dropdown-menu" id="roadmap-dropdown-menu">
-      <div class="news-dropdown-item active" onclick="selectRoadmapStage(0, '<span style=\'font-weight:600;color:#2563EB;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;\'>Stage 1</span> 소형 전문직 사무소')">
-        <span style="font-weight:600;color:#2563EB;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;">Stage 1</span> 소형 전문직 사무소
+      <div class="news-dropdown-item active" onclick="selectRoadmapStage(0, '<span style=\'font-weight:600;color:#55A4D3;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;\'>Stage 1</span> 소형 전문직 사무소')">
+        <span style="font-weight:600;color:#55A4D3;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;">Stage 1</span> 소형 전문직 사무소
       </div>
       <div class="news-dropdown-item" onclick="selectRoadmapStage(1, '<span style=\'font-weight:600;color:#7C3AED;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;\'>Stage 2</span> 미디어·콘텐츠 제작사')">
         <span style="font-weight:600;color:#7C3AED;margin-right:8px;display:inline-block;min-width:60px; white-space:nowrap;">Stage 2</span> 미디어·콘텐츠 제작사
@@ -857,8 +865,8 @@
   <div style="margin-top:20px;padding:14px 16px;background:var(--card-bg);border:0.5px solid var(--border);border-radius:var(--radius)">
     <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">인증·준비 타임라인</div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
-      <div style="padding:10px 12px;background:var(--bg);border-radius:var(--radius);border-left:3px solid #2563EB">
-        <div style="font-size:11px;font-weight:500;color:#2563EB;margin-bottom:4px">지금~6개월</div>
+      <div style="padding:10px 12px;background:var(--bg);border-radius:var(--radius);border-left:3px solid #55A4D3">
+        <div style="font-size:11px;font-weight:500;color:#55A4D3;margin-bottom:4px">지금~6개월</div>
         <div style="font-size:12px;color:var(--text-primary);line-height:1.6">시놀로지·큐냅 파트너 계약<br>POC 패키지 표준화<br>Stage 1~2 레퍼런스 확보</div>
       </div>
       <div style="padding:10px 12px;background:var(--bg);border-radius:var(--radius);border-left:3px solid #7C3AED">
@@ -999,7 +1007,7 @@
         ⑥ IDC(집적정보통신시설 사업자)
       </div>
     </div>
-    <div style="background:var(--info-bg);border:1px solid #BEE3F8;border-radius:var(--radius);padding:14px 16px">
+    <div style="background:var(--info-bg);border:1px solid #CCE4F2;border-radius:var(--radius);padding:14px 16px">
       <div style="font-size:11px;font-weight:600;color:var(--info-text);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">시리즈 B+ 스타트업이 특히 해당되는 이유</div>
       <div style="font-size:13px;color:var(--text-primary);line-height:1.9">
         매출 성장으로 <b>100억 임계점</b> 도달<br>
@@ -1186,6 +1194,35 @@
 </div>
 
 
+
+<!-- ────────────── PAGE: 홍보물 자료실 > 병의원 ────────────── -->
+<div class="page" id="pg-promo-clinic">
+  <div class="page-header">
+    <div class="page-title">병의원 홍보물 자료실</div>
+    <div class="page-desc">병의원·의원급 의료기관 대상 DATARK Private Storage 영업용 홍보 자료 모음</div>
+  </div>
+
+  <div class="section-label" style="margin: 24px 0 12px;">홍보 자료</div>
+  <div class="logic-row">
+    <div class="logic-card" style="cursor:default;">
+      <div class="logic-k" style="font-size:14px; font-weight:700; color:var(--cyan); margin-bottom:6px;">📄 자료를 여기에 추가하세요</div>
+      <div class="logic-v" style="font-size:13px; color:var(--text-secondary); line-height:1.6;">
+        병의원 대상 홍보물(브로셔, PPT, 제안서 등)을 이 섹션에 등록하세요.<br>
+        각 자료 카드에 링크, 설명, 파일 형식을 추가할 수 있습니다.
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box" style="margin-top:24px; background:rgba(0,201,167,0.07); border-left:3px solid var(--cyan); padding:14px 16px; border-radius:6px;">
+    <b>병의원 핵심 메시지</b><br>
+    <ul style="margin:8px 0 0 18px; line-height:1.8; font-size:13px; color:var(--text-secondary);">
+      <li>EMR·PACS 파일 소실 → 진료 중단, 환자 안전 리스크</li>
+      <li>의료법상 의무 보존 기간: 진료기록 10년, 방사선 필름 5년</li>
+      <li>RTO 15분 즉시 복구 — 진료 공백 최소화</li>
+      <li>Private IPFS 폐쇄망 운영 → 환자 개인정보 외부 노출 차단</li>
+    </ul>
+  </div>
+</div>
 
 <div class="page" id="pg-glossary">
   <style>
@@ -1905,7 +1942,7 @@ document.addEventListener('click', function(e) {
 });
 
 // ── 로드맵 데이터 & 렌더 ──────────────────────────────────
-const RM_ACCENT = ['#2563EB','#7C3AED','#DC2626','#D97706','#059669'];
+const RM_ACCENT = ['#55A4D3','#7C3AED','#DC2626','#D97706','#059669'];
 const RM_STAGES = [
   {
     id:0,name:'소형 전문직 사무소',
@@ -2063,7 +2100,7 @@ function showRoadmapStage(idx){
         <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">진입 전 체크리스트</div>
         <ul style="margin:0;padding:0;list-style:none">${s.prep.map(p=>`<li style="font-size:12px;color:var(--text-primary);padding:4px 0;border-bottom:0.5px solid var(--border);display:flex;gap:7px;line-height:1.55"><span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:${ac};flex-shrink:0;margin-top:7px"></span>${p}</li>`).join('')}</ul>
       </div>
-      <div style="background:linear-gradient(135deg,#1A3A5C 0%,#2A4D73 100%);border-radius:var(--radius);padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="background:linear-gradient(135deg,#1D5C8A 0%,#2870A0 100%);border-radius:var(--radius);padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between">
         <div style="font-size:10px;font-weight:500;color:#00C9A7;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">DATARK 제안 포인트</div>
         <div style="font-size:13px;color:rgba(255,255,255,0.9);line-height:1.7">${s.datark}</div>
       </div>
